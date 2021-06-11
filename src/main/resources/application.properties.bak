@@ -1,0 +1,29 @@
+server.servlet.context-path=/inner
+spring.mvc.view.prefix=classpath:/templates/
+spring.thymeleaf.cache=false
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.check-template-location=true
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.encoding=utf-8
+spring.thymeleaf.mode=HTML
+admin.username=admin
+admin.password=admin
+
+#####mysql#####
+spring.datasource.url = jdbc:mysql://47.94.160.172:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+spring.datasource.username = demo
+spring.datasource.password = L2FYPEBzrDay2eKT
+spring.datasource.driverClassName = com.mysql.cj.jdbc.Driver
+#mapper
+mybatis.mapper-locations=classpath:mapper/*.xml
+
+########druid##
+spring.datasource.type= com.alibaba.druid.pool.DruidDataSource
+spring.datasource.druid.initial-size=5
+spring.datasource.druid.max-active=30
+spring.datasource.druid.min-idle=5
+spring.datasource.druid.max-wait=60000
+
+
+########ras Private #####
+ras.privateKey=MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJeXV24qM4Zxg0Pamu1kqSn0gso4G4HT4lnn66DmQEzwgvi3LtEFiJWO1PVd0Aig4oIuJcHpKxwDKDU3q8+l/zd2ogbxl529liV3EAS9UH6bRqfLgqIcEyeCPUW6+XOWNCk7DwUPRqfYRtTKkSQKF6NajBaz0/5ws1MKVjwrZApzAgMBAAECgYAbLki/+RMqDRpzRTQ4Uq8+VZhJ+At+mOZiJoKKZB6tbQae4AGl+u8Fmgm3QS33DhnvK6Ubgtp2+F3yRNwqrGH5YBq42u4JV6OcVqx+1XaDTCTHr+eAJ9ojddJsPeYi+xXHWFlSE8peSsMB+pQ83/ePE8mdmKPN/iFha79hkmRQqQJBAPxYt//Vt0VVf/diOoG6BLvE5HSvddysJPeio4tZH4sj9iZbhjcFp5DvH8jX4EoHBjGz0urpKWDp9qA77fsyFuUCQQCZyTB++P1UZRJ2iFoEZds3ttX+i+PIJI7GV5Ol7zc89QCDo7xBW9EtBPM2htfofTaK+QsdkQp7F90N6U2a4W53AkEAqi6S+KCDFulQgd/nITH4m0Fv6Rmj3QzjaXZv4Txbv5SjHr8+xsCzf1UlFGgyRPpzvPVPW0mftFJVFz8TggMH2QJAV93ZBKM08zRwkSMk86BS2YlwyWiaM++XWAIPzV5ZnE2MBqrV1C4m3OcYI4517FMmh871p+YIK/6dgeZMPfMRzwJAdgoEVV/1La7HNQPHvLeRTWs6IRd9vY/9kWRq48jqvYPV6bkyN1C2xuCzhSVw1SrdpYJ8JkzfmK4SFnT51aA/2Q==
