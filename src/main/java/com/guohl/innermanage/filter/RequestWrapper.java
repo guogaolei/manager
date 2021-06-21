@@ -24,10 +24,12 @@ public class RequestWrapper extends HttpServletRequestWrapper {
      * @throws IllegalArgumentException if the request is null
      */
     RSAEncryptUtil RSAEncryptUtil;
+    boolean RasFlag=false;
     private final byte[] body;
-    public RequestWrapper(HttpServletRequest request, RSAEncryptUtil RSAEncryptUtil) {
+    public RequestWrapper(HttpServletRequest request, RSAEncryptUtil RSAEncryptUtil, boolean rasFlag) {
         super(request);
         this.RSAEncryptUtil=RSAEncryptUtil;
+        this.RasFlag=rasFlag;
         body=getBody(request).getBytes(Charset.forName("UTF-8"));
 
     }
@@ -90,15 +92,18 @@ public class RequestWrapper extends HttpServletRequestWrapper {
              }
          }
          //ras加密的数据
-        String rasParam = sb.toString();
-         //ras开始解密
-        String decrypt="";
-        try {
-           decrypt = RSAEncryptUtil.decrypt(rasParam);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-        }
+        String decrypt=sb.toString();
+         logger.info("上送参数："+decrypt);
+        if(RasFlag){
+             //ras开始解密
+             try {
+                 decrypt = RSAEncryptUtil.decrypt(decrypt);
+             } catch (Exception e) {
+                 logger.info("上送参数解析失败");
+                 e.printStackTrace();
+                 return "";
+             }
+         }
         String base64param = decrypt;
         BASE64Decoder decoder=new BASE64Decoder();
         byte[] bytes=null;

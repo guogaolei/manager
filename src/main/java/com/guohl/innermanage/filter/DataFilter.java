@@ -5,7 +5,9 @@ import com.guohl.innermanage.utils.RSAEncryptUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,8 @@ public class DataFilter implements Filter {
 
     @Autowired
     RSAEncryptUtil RSAEncryptUtil;
+    @Value("${ras.activate}")
+    boolean RasFlag;
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest=(HttpServletRequest)request;
@@ -48,7 +52,7 @@ public class DataFilter implements Filter {
                 chain.doFilter(request,response);
             }
             if ("POST".equals(method)){
-                RequestWrapper requestWrapper=new RequestWrapper((HttpServletRequest)request,RSAEncryptUtil);
+                RequestWrapper requestWrapper=new RequestWrapper((HttpServletRequest)request,RSAEncryptUtil,RasFlag);
                 BufferedReader reader = requestWrapper.getReader();
                 String line=null;
                 StringBuffer sb=new StringBuffer();
@@ -81,6 +85,9 @@ public class DataFilter implements Filter {
     }
 
     private boolean parseData(String toString) {
+        if(StringUtils.isEmpty(toString)){
+            return false;
+        }
         Gson gson=new Gson();
         try{
         gson.fromJson(toString, Map.class);
