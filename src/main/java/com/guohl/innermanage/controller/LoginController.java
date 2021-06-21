@@ -1,10 +1,13 @@
 package com.guohl.innermanage.controller;
 
+import com.guohl.innermanage.dao.UserDao;
 import com.guohl.innermanage.entity.CommonResponse;
 import com.guohl.innermanage.entity.LoginParamRequest;
 import com.guohl.innermanage.entity.LoginParamResponse;
+import com.guohl.innermanage.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +26,9 @@ public class LoginController {
     String userNameAdmin;
     @Value("${admin.password}")
     String passwordAdmin;
+
+    @Autowired
+    UserDao userDao;
     @RequestMapping(value = "login",method = {RequestMethod.POST})
     @ResponseBody
     public LoginParamResponse login(@RequestBody LoginParamRequest request, HttpServletRequest httprequest){
@@ -36,7 +42,9 @@ public class LoginController {
             response.setMsg("请输入登录账号及密码");
             return response;
         }
-        if(!userNameAdmin.equals(username) || !passwordAdmin.equals(password)){
+        UserEntity UserEntity = userDao.getUser(username);
+
+        if(null == UserEntity || !UserEntity.getUserName().equals(username) || !UserEntity.getPassWord().equals(password)){
             response.setCode("100");
             response.setMsg("用户名密码输入有误，请重新输入");
             return response;
