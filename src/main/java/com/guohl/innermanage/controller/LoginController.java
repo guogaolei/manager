@@ -22,11 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${admin.username}")
-    String userNameAdmin;
-    @Value("${admin.password}")
-    String passwordAdmin;
-
     @Autowired
     UserDao userDao;
     @RequestMapping(value = "login",method = {RequestMethod.POST})
