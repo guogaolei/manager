@@ -16,7 +16,10 @@
         select *
         from users where userName=#{userName}
     </select>
-
+    <select id="getAllUser"  resultMap="UserMap">
+        select *
+        from users
+    </select>
 
 
 </mapper>
