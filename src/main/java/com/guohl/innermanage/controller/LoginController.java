@@ -24,7 +24,7 @@ public class LoginController {
 
     @Autowired
     UserDao userDao;
-    @RequestMapping(value = "login",method = {RequestMethod.POST})
+    @RequestMapping(value = "/login",method = {RequestMethod.POST})
     @ResponseBody
     public LoginParamResponse login(@RequestBody LoginParamRequest request, HttpServletRequest httprequest){
 
@@ -61,5 +61,6 @@ public class LoginController {
         response.setMsg("交易成功");
         return response;
     }
+
 
 }
