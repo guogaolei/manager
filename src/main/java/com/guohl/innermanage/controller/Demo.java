@@ -2,6 +2,7 @@ package com.guohl.innermanage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -19,7 +20,7 @@ public class Demo {
     public String get2(){
         return "ok";
     }
-    @RequestMapping("authenticated/getData")
+    @RequestMapping(value="authenticated/getData",method = RequestMethod.POST)
     @ResponseBody
     public String get3(){
         return "ok";

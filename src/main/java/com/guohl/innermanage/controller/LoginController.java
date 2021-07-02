@@ -8,7 +8,6 @@ import com.guohl.innermanage.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +18,13 @@ import org.thymeleaf.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("guest")
 public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     UserDao userDao;
-    @RequestMapping(value = "/login",method = {RequestMethod.POST})
+    @RequestMapping(value = "/login2",method = {RequestMethod.POST})
     @ResponseBody
     public LoginParamResponse login(@RequestBody LoginParamRequest request, HttpServletRequest httprequest){
 
