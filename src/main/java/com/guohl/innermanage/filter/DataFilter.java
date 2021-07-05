@@ -21,10 +21,6 @@ import java.util.Map;
 public class DataFilter implements Filter {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
 
     @Autowired
     RSAEncryptUtil RSAEncryptUtil;
