@@ -1,6 +1,5 @@
 package com.guohl.innermanage.config;
 
-import com.guohl.innermanage.interceptor.InterceptorSercurity;
 import com.guohl.innermanage.interceptor.StaticInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -18,6 +17,5 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new StaticInterceptor()).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATH);
-        registry.addInterceptor(new InterceptorSercurity()).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATH);
     }
 }
